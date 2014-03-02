@@ -71,6 +71,21 @@ HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历�
 
 要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。
 
+## 工作区和暂存区
+分为工作区和版本库，其中版本库包括一个暂存区Stage和一个Master，HEAD指针指向Mater。
+工作区，是还未进行add和commit的文件，此时的通过git status查看，这样的文件是untracked的。
+
+当执行add时，将工作区的文件add到Stage中，接着使用commit就会将stage区中的文件提交到Master分支中。
+关系如下图所示。
+
+![](http://www.liaoxuefeng.com/files/attachments/001384907720458e56751df1c474485b697575073c40ae9000/0)
+
+暂存区是很重要的概念。
+
+##管理修改
+为什么Git比其他版本控制系统设计得优秀，因为Git跟踪并管理的是修改，而非文件。
+
+
 
 
 
