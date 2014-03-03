@@ -169,11 +169,41 @@ git的分支解释，HEAD指向分支，也即指向Master，Master指向提交c
 创建+切换分支
 > git checkout -b name
 
-合并某分支到当前分支
+合并某分支name到当前分支
 > git merge name
 
 删除分支
 > git branch -d name
+
+当Git无法自动合并分支时，可根据git status提示，查看冲突文件。Git用如下的方式标记冲突内容。
+> <<<<<<<HEAD
+
+> master 内容
+
+> =======
+分支内容
+
+> >>>>>>>feature1 
+
+然后手工调整，解决冲突，之后再添加提交。可以通过**git log --graph**查看分支合并情况
+> git log --graph --pretty=oneline --abbrev-commit
+
+##分支策略
+
+> Matster分支作为仅用来发布稳定版
+
+> 干活在Dev分支上，每个人的各自分支都向Dev分支上合并，最终发布稳定版，就向Master合并
+
+> 团队合作就如图所示
+
+![](http://www.liaoxuefeng.com/files/attachments/001384909239390d355eb07d9d64305b6322aaf4edac1e3000/0)
+
+**Tips**
+> 合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
+
+
+
+
 
 
 
