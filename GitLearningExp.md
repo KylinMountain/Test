@@ -102,7 +102,7 @@ HEAD^^表示回退到上上个版本，HEAD~100表示回退到100个提交版本
 ## git reset HEAD <file>
 场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令
 
->git reset HEAD file
+> git reset HEAD file
 
 就回到了场景1，第二步按场景1操作。
 
@@ -115,7 +115,8 @@ HEAD^^表示回退到上上个版本，HEAD~100表示回退到100个提交版本
 
 删除工作区中的文件，如果此时该文件已经在暂存区Stage或者Mater中，那么git status就会检测到不一致，
 所以接着就是使用
->git rm <file>
+
+> git rm <file>
 
 删除在版本库中的记录，接着commit提交。此时还可以使用
 > git checkout -- <file>
@@ -128,6 +129,7 @@ Tips
 ## 建立远程仓库
 1. 注册github账号
 2. 本地msysgit命令行中使用命令生成SSH秘钥
+
 >  ssh-keygen -t rsa -C "youremail@example.com"
 
 将生成的秘钥id_rsa.pub这个公钥中的内容拷贝出来
@@ -158,13 +160,14 @@ git的分支解释，HEAD指向分支，也即指向Master，Master指向提交c
 所以Master的版本还是Master.
 
 创建一个dev的分支
->git branch dev
+
+> git branch dev
  
 切换到dev分支
->git checkout dev
+> git checkout dev
 
 查看分支
->git branch
+> git branch
 
 创建+切换分支
 > git checkout -b name
@@ -203,11 +206,11 @@ git的分支解释，HEAD指向分支，也即指向Master，Master指向提交c
 
 ##Bug 分支
 git提供了一个stash分支，可以把工作区的未提交修改“储藏起来”，等以后恢复现场后继续工作。
->git stash
+> git stash
 
 保存工作区，进入master分支，建立bug分支，修复后提交到master分区。删除bug分支，切换回dev分支
 
->git  stash pop
+> git  stash pop
 
 恢复工作区。
 
@@ -244,10 +247,11 @@ git提供了一个stash分支，可以把工作区的未提交修改“储藏起
 - 解决冲突文件,然后add,commit 再push
 
 ###Tips
->首先，可以试图用git push origin branch-name推送自己的修改；
-如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
-如果合并有冲突，则解决冲突，并在本地提交；
-没有冲突或者解决掉冲突后，再用git push origin branch-name推送就能成功！
+1. 首先，可以试图用git push origin branch-name推送自己的修改；
+
+2. 如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+3. 如果合并有冲突，则解决冲突，并在本地提交；
+4. 没有冲突或者解决掉冲突后，再用git push origin branch-name推送就能成功！
 
 如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令**git branch --set-upstream branch-name origin/branch-name**。
 
@@ -260,21 +264,27 @@ git提供了一个stash分支，可以把工作区的未提交修改“储藏起
 > git tag tagname 
 
 - 给commitid打一个标签tagname
+
 > git tag tagname commitid
  
 - 查看所有标签
+
 > git tag
 
 - 查看标签信息
+
 > git show tagname
 
 - 创建带有标签说明的标签-a 指定标签名，-m 指明说明
-git tag -a v0.1 -m "version 0.1 released" 3628164
+
+> git tag -a v0.1 -m "version 0.1 released" 3628164
 
 - 删除标签
+
 > 命令**git tag -d tagname**可以删除一个本地标签；命令git push origin :refs/tags/tagname可以删除一个远程标签。
 
 - 推送标签
+
 > 命令**git push origin tagname**可以推送一个本地标签；命令**git push origin --tags**可以推送全部未推送过的本地标签；
 
 ## GitHub
@@ -282,6 +292,7 @@ git tag -a v0.1 -m "version 0.1 released" 3628164
 如果不Fork直接Clone别人的项目是无法push的，权限问题。
 
 **Tips**
+
 > 在GitHub上，可以任意Fork开源仓库；自己拥有Fork后的仓库的读写权限；可以推送pull request给官方仓库来贡献代码。
 
 -------------------
