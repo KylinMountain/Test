@@ -48,11 +48,11 @@
 命令:
 > git init
 
-##git add <file>
-使用git add 添加文件，不论该文件是修改的，还是新添加的，都是采用git add <file>
+##git add filename
+使用git add 添加文件，不论该文件是修改的，还是新添加的，都是采用git add filename
 ##git status
 可以查看是否有文件修改或者添加进来
-##git diff <file>
+##git diff filename
 可以查看该文件与已经提交过的文件的不同。
 其中（还不确定），
 - 红色字体表示完全不同，并且会带有符号减
@@ -95,11 +95,11 @@ HEAD^^表示回退到上上个版本，HEAD~100表示回退到100个提交版本
 ##管理修改
 为什么Git比其他版本控制系统设计得优秀，因为Git跟踪并管理的是修改，而非文件。
 
-##git checkout -- <file>
+##git checkout -- filename
 场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令
 > git checkout -- file。
 
-## git reset HEAD <file>
+## git reset HEAD filename
 场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令
 
 > git reset HEAD file
@@ -111,15 +111,15 @@ HEAD^^表示回退到上上个版本，HEAD~100表示回退到100个提交版本
 
 
 ## 删除文件
-> rm <file>
+> rm filename
 
 删除工作区中的文件，如果此时该文件已经在暂存区Stage或者Mater中，那么git status就会检测到不一致，
 所以接着就是使用
 
-> git rm <file>
+> git rm filename
 
 删除在版本库中的记录，接着commit提交。此时还可以使用
-> git checkout -- <file>
+> git checkout -- filename
 
 来撤销对工作区的修改。
 Tips 
