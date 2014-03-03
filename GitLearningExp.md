@@ -179,15 +179,11 @@ git的分支解释，HEAD指向分支，也即指向Master，Master指向提交c
 > git branch -d name
 
 当Git无法自动合并分支时，可根据git status提示，查看冲突文件。Git用如下的方式标记冲突内容。
- > <<<<<<<HEAD"
-
- master 内容
-
-" ======="
-
-分支内容
-
-" >>>>>>>feature1"
+- <<<<<<<HEAD
+- master 内容
+- =======
+- 分支内容
+- >>>>>>>feature1
 
 然后手工调整，解决冲突，之后再添加提交。可以通过**git log --graph**查看分支合并情况
 > git log --graph --pretty=oneline --abbrev-commit
