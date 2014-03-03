@@ -143,14 +143,14 @@ Tips
 接着：
 > git push -u origin master
 
-将本地仓库的内容推送至远程仓库origin的master分支上。
+将本地仓库的master分支推送至远程仓库origin的master分支上。
 -u第一次推送时使用，之后无需再加-u.
 
-> 要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
+> 要关联一个远程库，使用命令**git remote add origin git@server-name:path/repo-name.git**；
 
-关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
+关联后，使用命令**git push -u origin master**第一次推送master分支的所有内容；
 
-此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
+此后，每次本地提交后，只要有必要，就可以使用命令**git push origin master**推送最新修改；
 
 ## 分支
 git的分支解释，HEAD指向分支，也即指向Master，Master指向提交commit。
@@ -199,10 +199,68 @@ git的分支解释，HEAD指向分支，也即指向Master，Master指向提交c
 ![](http://www.liaoxuefeng.com/files/attachments/001384909239390d355eb07d9d64305b6322aaf4edac1e3000/0)
 
 **Tips**
-> 合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
+> 合并分支时，加上**--no-ff**参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
 
 ##Bug 分支
 git提供了一个stash分支，可以把工作区的未提交修改“储藏起来”，等以后恢复现场后继续工作。
+>git stash
+
+保存工作区，进入master分支，建立bug分支，修复后提交到master分区。删除bug分支，切换回dev分支
+
+>git  stash pop
+
+恢复工作区。
+
+## feature分支
+开发一个新feature，最好新建一个分支；如果要丢弃一个没有被合并过的分支，使用
+> git branch -d branchname
+
+将提示无法删除，可以通过一下命令强行删除。
+> git branch -D branchname
+
+##多人协作
+> git push origin master
+
+其中origin表示远程分支，master表示本地分支。
+> git push origin dev
+
+###Tips
+- master分支是主分支，因此要时刻与远程同步；
+- dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；
+- bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；
+- feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。
+
+将dev分支推送至远程仓库的dev分支，这样其它人就可以建立dev的分支branchname，建立方法如下：
+>  git checkout -b branchname origin/dev
+
+之后就可以使用git push 推送到远程dev仓库里
+> git push origin branchname
+
+若是两个人对同一个文件进行了修改，那么push将导致出错。
+
+解决方法：
+- git branch --set-upstream branchname origin/dev
+- git pull
+- 解决冲突文件,然后add,commit 再push
+
+###Tips
+>首先，可以试图用git push origin branch-name推送自己的修改；
+如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+如果合并有冲突，则解决冲突，并在本地提交；
+没有冲突或者解决掉冲突后，再用git push origin branch-name推送就能成功！
+
+如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令**git branch --set-upstream branch-name origin/branch-name**。
+
+这就是多人协作的工作模式，一旦熟悉了，就非常简单。
+
+
+
+
+
+
+
+
+
 
 
 
