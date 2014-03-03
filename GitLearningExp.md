@@ -253,6 +253,43 @@ git提供了一个stash分支，可以把工作区的未提交修改“储藏起
 
 这就是多人协作的工作模式，一旦熟悉了，就非常简单。
 
+## 标签
+
+- 给当前的HEAD打一个标签tagname
+
+> git tag tagname 
+
+- 给commitid打一个标签tagname
+> git tag tagname commitid
+ 
+- 查看所有标签
+> git tag
+
+- 查看标签信息
+> git show tagname
+
+- 创建带有标签说明的标签-a 指定标签名，-m 指明说明
+git tag -a v0.1 -m "version 0.1 released" 3628164
+
+- 删除标签
+> 命令**git tag -d tagname**可以删除一个本地标签；命令git push origin :refs/tags/tagname可以删除一个远程标签。
+
+- 推送标签
+> 命令**git push origin tagname**可以推送一个本地标签；命令**git push origin --tags**可以推送全部未推送过的本地标签；
+
+## GitHub
+首先要Fork别人的项目，然后再本地clone下来，接着自己可以更改并push。
+如果不Fork直接Clone别人的项目是无法push的，权限问题。
+
+**Tips**
+> 在GitHub上，可以任意Fork开源仓库；自己拥有Fork后的仓库的读写权限；可以推送pull request给官方仓库来贡献代码。
+
+
+
+
+
+
+
 
 
 
