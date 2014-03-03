@@ -38,7 +38,9 @@
 所以在Msysgit中，cd到某个目录，mkdir建立一个存放代码的目录，并进入该目录
 比如：
 > cd Document
+
 > mkdir GitProject
+
 > cd GitProject
 
 进入到GitProject目录下后，使用git init命令对该目录进行初始化，
@@ -122,6 +124,38 @@ HEAD^^表示回退到上上个版本，HEAD~100表示回退到100个提交版本
 Tips 
 
 > 命令git rm用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容。
+
+## 建立远程仓库
+1. 注册github账号
+2. 本地msysgit命令行中使用命令生成SSH秘钥
+>  ssh-keygen -t rsa -C "youremail@example.com"
+
+将生成的秘钥id_rsa.pub这个公钥中的内容拷贝出来
+3. 在GitHub中账户设置“Account Setting”中Add SSH settings，然后将拷贝的秘钥赋值进去。
+5. 在GitHub中新建新的仓库，账户边上的+号中“create new repo”,设置项目名，比如Test
+
+## 连接远程仓库
+在msysgit中使用
+> git remote add origin git@github.com:KylinGu/Test.git
+
+其中KylinGu改为自己的用户名。
+这个就是将本地的仓库与GitHub的仓库关联上，origin为你的远程仓库的别名。
+接着：
+> git push -u origin master
+
+将本地仓库的内容推送至远程仓库origin的master分支上。
+-u第一次推送时使用，之后无需再加-u.
+
+> 要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
+
+关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
+
+此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
+
+
+
+
+
 
 
 
