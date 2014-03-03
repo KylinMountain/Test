@@ -152,6 +152,28 @@ Tips
 
 此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
 
+## 分支
+git的分支解释，HEAD指向分支，也即指向Master，Master指向提交commit。
+创建分支，就是将HEAD指向分支,比如dev，然后dev指向commit。
+所以Master的版本还是Master.
+
+创建一个dev的分支
+>git branch dev
+ 
+切换到dev分支
+>git checkout dev
+
+查看分支
+>git branch
+
+创建+切换分支
+> git checkout -b name
+
+合并某分支到当前分支
+> git merge name
+
+删除分支
+> git branch -d name
 
 
 
